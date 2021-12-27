@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/home.css') }}">
+{% endblock %}
+
+{% block title %}
+Greet
+{% endblock %}
+
+{% block content %}
+
+<a href="/all-greetings">See all greetings</a>
+<form method="POST">
+    <div>
+        <label>How do I call you</label>
+        <input class="input" type="text" name="name" placeholder="your name">
+    </div>
+    <div>
+        <button type="submit">Greet</button>
+    </div>
+</form>
+
+{% endblock %}
