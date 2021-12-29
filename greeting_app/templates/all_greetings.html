@@ -10,7 +10,12 @@ All greetings
 
 {% block content %}
     <a href="/">Home</a>
-{% for name in names %}
-    <p>{{name}}</p>
-{% endfor %}
+{% if visitors|length < 1 %}
+    <p>Ніхто ще не вітався</p>
+{% else %}
+    <p> Список тих, хто привітався:</p>
+    {% for visitor in visitors %}
+        <p>{{visitor.name}}</p>
+    {% endfor %}
+{% endif %}
 {% endblock %}

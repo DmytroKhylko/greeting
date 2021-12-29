@@ -11,14 +11,23 @@ Greet
 
 {% block content %}
 
-<a href="/all-greetings">See all greetings</a>
+<a href="/all-greetings">Список всіх, з ким привітався</a>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+        <ul class="notification {{ category }} is-light">
+        <li class="{{ category }}">{{ message }}</li>
+        </ul>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
 <form method="POST">
     <div>
-        <label>How do I call you</label>
+        <label>Як мені вас звати</label>
         <input class="input" type="text" name="name" placeholder="your name">
     </div>
     <div>
-        <button type="submit">Greet</button>
+        <button type="submit">Привітатися</button>
     </div>
 </form>
 

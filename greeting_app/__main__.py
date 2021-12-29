@@ -1,3 +1,4 @@
+from flask_migrate import Migrate
 from greeting_app.create_app import create_app
 import os
 app = create_app("greeting_app.config.DevelopmentConfig")

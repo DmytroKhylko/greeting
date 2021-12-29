@@ -2,13 +2,32 @@ version: "3.9"
 
 services:
 
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db_data/postgres-data:/var/lib/postgresql/data
+  db-test:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5433:5432"
+  
   python-flask:
     build: .
     restart: always
+    depends_on: 
+      - db
     env_file: 
       - .env
     ports:
       - "5000:5000"
     volumes:
       - .:/usr/src/api    
-    command: ["sh", "init.sh"]
+    command: ["./wait-for-it.sh", "db:5432", "--", "bash", "init.sh"]
