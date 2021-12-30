@@ -23,7 +23,7 @@ jobs:
       run: docker-compose -f "docker-compose.yml" up -d --build
 
     - name: Test with pytest
-      run: docker ps
+      run: docker exec greeting_python-flask_1 "pytest"
 
     - name: Stop containers
       if: always()
