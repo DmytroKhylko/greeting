@@ -6,5 +6,4 @@ COPY . /usr/src/api/
 WORKDIR /usr/src/api
 RUN pip install -r requirements.txt
 RUN chmod +x ./wait-for-it.sh
-RUN chmod +x ./init.sh
-CMD sh init.sh
+CMD chmod +x ./init.sh && ./init.sh

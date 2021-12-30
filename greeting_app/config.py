@@ -20,6 +20,9 @@ class DevelopmentConfig(Config):
     DB_NAME = os.getenv('DB_NAME')
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL", f"postgresql+psycopg2://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}")
 
+    if SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
+        SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://", 1)
+
 
 
 class TestingConfig(Config):
