@@ -1,8 +1,7 @@
-
 {% extends "base.html" %}
 
 {% block style %}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/home.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/home.css') }}">
 {% endblock %}
 
 {% block title %}
@@ -10,25 +9,33 @@ Greet
 {% endblock %}
 
 {% block content %}
-
-<a href="/all-greetings">Список всіх, з ким привітався</a>
-{% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    {% for category, message in messages %}
-        <ul class="notification {{ category }} is-light">
-        <li class="{{ category }}">{{ message }}</li>
-        </ul>
-        {% endfor %}
-    {% endif %}
-{% endwith %}
-<form method="POST">
-    <div>
-        <label>Як мені вас звати</label>
-        <input class="input" type="text" name="name" placeholder="your name">
-    </div>
-    <div>
-        <button type="submit">Привітатися</button>
-    </div>
-</form>
+<header class="p-3 border-bottom">
+    <ul class="nav justify-content">
+        <li class="nav-item">
+            <a class="btn btn-outline-primary nav-link px-2 link-dark" href="/all-greetings">Список всіх, з ким
+                привіталися</a>
+        </li>
+    </ul>
+</header>
+<div class="d-flex flex-wrap align-items-center justify-content-center">
+    <form method="POST" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 align-items-center">
+        <div>
+            <label class="fs-2">Як мені вас звати?</label>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-danger">
+                <label class="is-invalid">{{ message }}</label>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <input class="input form-control form-control-dark mb-2" type="text" name="name" placeholder="your name">
+        </div>
+        <div>
+            <button class="btn btn-outline-primary" type="submit">Привітатися</button>
+        </div>
+    </form>
+</div>
 
 {% endblock %}

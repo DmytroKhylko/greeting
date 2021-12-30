@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block style %}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/all_greetings.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/all_greetings.css') }}">
 {% endblock %}
 
 {% block title %}
@@ -9,13 +9,23 @@ All greetings
 {% endblock %}
 
 {% block content %}
-    <a href="/">Home</a>
-{% if visitors|length < 1 %}
-    <p>Ніхто ще не вітався</p>
-{% else %}
-    <p> Список тих, хто привітався:</p>
-    {% for visitor in visitors %}
-        <p>{{visitor.name}}</p>
-    {% endfor %}
-{% endif %}
+<header class="p-3 border-bottom">
+    <ul class="nav justify-content">
+        <li class="nav-item">
+            <a class="btn btn-outline-primary nav-link px-2 link-dark" href="/">Home</a>
+        </li>
+    </ul>
+</header>
+
+<div class="d-flex flex-wrap align-items-center justify-content-center">
+    {% if visitors|length < 1 %} <p class="fs-2">Ніхто ще не вітався</p>
+        {% else %}
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item fs-4"> Список тих, хто привітався:</li>
+            {% for visitor in visitors %}
+            <li class="list-group-item">{{visitor.name}}</li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+</div>
 {% endblock %}

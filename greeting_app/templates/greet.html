@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block style %}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/greet.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/greet.css') }}">
 {% endblock %}
 
 {% block title %}
@@ -9,8 +9,19 @@ Greet
 {% endblock %}
 
 {% block content %}
-<a href="/">Home</a>
-<a href="/all-greetings">See all greetings</a>
-<p>{{message}}, {{name}}</p>
+<header class="p-3 border-bottom">
+    <ul class="nav justify-content mx-auto">
+        <li class="nav-item">
+            <a class="btn btn-outline-primary nav-link px-2 link-dark" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-outline-primary nav-link px-2 link-dark" href="/all-greetings">Список всіх, з ким
+                привітався</a>
+        </li>
+    </ul>
+</header>
+<div class="text-center fs-1">
+    <p>{{message}}, {{name}}</p>
+</div>
 
 {% endblock %}
