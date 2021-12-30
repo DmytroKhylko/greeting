@@ -23,7 +23,7 @@ jobs:
       run: docker-compose -f "docker-compose.yml" up -d --build
     
     - name: Ping db-test
-      run: docker exec greeting_python-flask_1 "ping -c 5 db-test"
+      run: docker ps
 
     - name: Test with pytest
       run: docker exec greeting_python-flask_1 "pytest"
