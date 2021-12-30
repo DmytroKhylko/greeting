@@ -15,9 +15,6 @@ def test_name_input_blank(client, init_database):
 
     assert bytes("Поле не може бути пустим", 'utf-8') in response.data
 
-    init_database.session.remove()
-    init_database.drop_all()
-
 def test_name_input_first_greet(client, init_database):
     init_database.drop_all()
     init_database.create_all()
@@ -27,9 +24,6 @@ def test_name_input_first_greet(client, init_database):
     ), follow_redirects=True)
 
     assert bytes("Привіт, John", 'utf-8') in response.data
-
-    init_database.session.remove()
-    init_database.drop_all()
 
 def test_name_input_second_greet(client, init_database):
     init_database.drop_all()
@@ -42,6 +36,3 @@ def test_name_input_second_greet(client, init_database):
     ), follow_redirects=True)
 
     assert bytes("Вже бачились, John", 'utf-8') in response.data
-
-    init_database.session.remove()
-    init_database.drop_all()
