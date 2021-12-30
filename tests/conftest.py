@@ -19,24 +19,6 @@ def client(app):
 def init_database():
     yield db
 
-@pytest.fixture()
-def add_new_visitor(init_database):
-    init_database.drop_all()
-    init_database.create_all()
-    visitor = Visitor(name="John")
-    init_database.session.add(visitor)
-    init_database.session.commit()
-    return visitor
-    
-@pytest.fixture()
-def add_new_visitors(init_database):
-    init_database.drop_all()
-    init_database.create_all()
-    visitor = Visitor(name="John")
-    init_database.session.add(visitor)
-    init_database.session.commit()
-
-
 def greet(client, name):
     return client.post('/', data=dict(
         name=name
