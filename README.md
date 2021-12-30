@@ -1,5 +1,6 @@
 # Greeting
-Get greeting with your name
+Get greeting with your name on
+[Heroku](https://flask-greeting-app-d.herokuapp.com/)
 ___
 
 #### All necessary variables are stored in ***.env*** file in app top level directory
